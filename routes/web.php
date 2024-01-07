@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UkuranController;
+use App\Http\Controllers\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,6 +50,12 @@ Route::group(['middleware' => 'role:admin'], function () {
         Route::get('/ukuran/{ukuran}/edit', 'ajaxUkuran')->name('ukuran.edit');
         Route::patch('/ukuran/{ukuran}', 'update')->name('ukuran.update');
         Route::delete('/ukuran/{ukuran}', 'destroy')->name('ukuran.delete');
+    });
+
+    Route::controller(ProductController::class)->group(function () {
+        Route::get('/product', 'index')->name('product');
+        Route::get('/productAjax', 'productAjax')->name('productAjax');
+        Route::post('/orders', 'store');
     });
 });
 

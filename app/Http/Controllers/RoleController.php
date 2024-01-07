@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Role;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class RoleController extends Controller
 {
@@ -12,9 +13,18 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.role.index');
     }
 
+    function roleAjax()
+    {
+        $role = Role::latest();
+        return DataTables::of($role)
+            ->addColumn('action', function ($role) {
+                return '<span><buttton data-toggle="tooltip" data-placement="top" title="Edit" onclick="editKat(' . $role->id . ')"><i class="fa fa-pencil color-muted m-r-5"></i> </buttton> ' .
+                    '<buttton data-toggle="tooltip" data-placement="top" title="Close" onclick="delKat(' . $role->id . ')"><i class="fa fa-close color-danger"></i></buttton></span>';
+            })->rawColumns(['action'])->make(true);
+    }
     /**
      * Show the form for creating a new resource.
      */

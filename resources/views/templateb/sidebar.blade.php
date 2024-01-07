@@ -20,6 +20,11 @@
                         <i class="icon-energy menu-icon"></i> <span class="nav-text">Ukuran</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('product') }}" aria-expanded="false">
+                        <i class="fa fa-shopping-cart menu-icon"></i> <span class="nav-text">Product</span>
+                    </a>
+                </li>
             @endrole
             @hasanyrole('admin|desainer')
                 <li class="nav-label">Designer</li>
