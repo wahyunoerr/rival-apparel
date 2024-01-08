@@ -22,11 +22,21 @@ class ProductController extends Controller
 
     function productAjax()
     {
-        $product = Product::latest();
-        $kategori = Product::with('kategori')->get();
-        $ukuran = Product::with('ukuran')->get();
+        $product = Product::with(['Kategori:name', 'Ukuran:nUkuran'])->latest()->get();
 
         return DataTables::of($product)
+            ->addColumn(
+                'kategori_id',
+                function ($product) {
+                    return $product->kategori->name;
+                }
+            )
+            ->addColumn(
+                'ukuran_id',
+                function ($product) {
+                    return $product->ukuran->nUkuran;
+                }
+            )
             ->addColumn('action', function ($product) {
                 return '<span><buttton data-toggle="tooltip" data-placement="top" title="Edit" onclick="editProd(' . $product->id . ')"><i class="fa fa-pencil color-muted m-r-5"></i> </buttton> ' .
                     '<buttton data-toggle="tooltip" data-placement="top" title="Close" onclick="delProd(' . $product->id . ')"><i class="fa fa-close color-danger"></i></buttton></span>';
@@ -61,7 +71,7 @@ class ProductController extends Controller
             'kategori_id' => $request->kategori,
             'harga' => $request->harga
         ]);
-        return redirect('/produk');
+        return redirect('product');
     }
 
     /**

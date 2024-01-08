@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('gambar');
             $table->string('harga');
             $table->timestamps();
-            $table->foreign('kategori_id')->references('id')->on('ukurans')->cascadeOnDelete();
-            $table->foreign('ukuran_id')->references('id')->on('kategoris')->cascadeOnDelete();
+            $table->foreign('kategori_id')->references('id')->on('kategoris')->cascadeOnDelete();
+            $table->foreign('ukuran_id')->references('id')->on('ukurans')->cascadeOnDelete();
         });
     }
 
