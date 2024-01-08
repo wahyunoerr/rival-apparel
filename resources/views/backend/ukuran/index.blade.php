@@ -157,7 +157,7 @@
                     $.ajax({
                         url: url,
                         type: "POST",
-                        data: new FormData($('#formKat form')[0]),
+                        data: new FormData($('#formUkur form')[0]),
                         contentType: false,
                         processData: false,
                         success: function(data) {

@@ -26,7 +26,6 @@
                         </tr>
                     </thead>
                     <tbody>
-
                     </tbody>
                     <tfoot>
                         <tr>
@@ -111,7 +110,7 @@
                     if (isConfirmed) {
                         $.ajax({
                             type: 'DELETE',
-                            url: "{{ url('produk') }}/" + id,
+                            url: "{{ url('product') }}/" + id,
                             data: {
                                 "_token": "{{ csrf_token() }}",
                                 "_method": "DELETE"
@@ -167,9 +166,9 @@
                     var id = $('#id').val();
 
                     if (save_method == 'add') {
-                        url = "{{ route('kategori.save') }}";
+                        url = "{{ route('product.save') }}";
                     } else {
-                        url = "{{ url('kategori') }}/" + id + "/edit";
+                        url = "{{ url('product') }}/" + id + "/edit";
                     }
 
                     $.ajax({

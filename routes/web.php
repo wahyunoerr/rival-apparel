@@ -54,8 +54,9 @@ Route::group(['middleware' => 'role:admin'], function () {
 
     Route::controller(ProductController::class)->group(function () {
         Route::get('/product', 'index')->name('product');
+        Route::get('/product/{product}/edit', 'edit')->name('product.edit');
         Route::get('/productAjax', 'productAjax')->name('productAjax');
-        Route::post('/orders', 'store');
+        Route::post('/product', 'store')->name('product.save');
     });
 });
 

@@ -61,6 +61,7 @@ class ProductController extends Controller
             'kategori_id' => $request->kategori,
             'harga' => $request->harga
         ]);
+        return redirect('/produk');
     }
 
     /**
