@@ -40,14 +40,15 @@ class UkuranController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nUkuran' => 'required|string|min:2',
-            'harga' => 'required|numeric|min:2'
+            'nUkuran' => 'required|string'
         ]);
 
         Ukuran::create([
             'nUkuran' => $request->nUkuran,
             'harga' => $request->harga
         ]);
+
+        return redirect('ukuran');
     }
 
     /**

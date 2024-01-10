@@ -132,7 +132,7 @@
                         $('.modal-title').text('Edit Ukuran');
 
                         $('#id').val(data.id);
-                        $('#nameUkuran').val(data.nUkuran);
+                        $('#nameUkur').val(data.nUkuran);
                         $('#hargaUkur').val(data.harga);
                     },
                     error: function(data, xhr, status, error) {
