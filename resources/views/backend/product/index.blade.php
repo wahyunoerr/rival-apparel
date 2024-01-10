@@ -64,7 +64,11 @@
                     },
                     {
                         data: 'gambar',
-                        name: 'gambar'
+                        name: 'gambar',
+                        render: function(data, type, full, meta) {
+                            return '<img src="' + data +
+                                '" alt="Product Image" class="img-thumbnail" width="50">';
+                        }
                     },
                     {
                         data: 'ukuran_id',
@@ -94,7 +98,7 @@
                 $('.modal-title').text('Add Product');
             }
 
-            function delKat(id) {
+            function delProd(id) {
                 swal({
                     title: "Are you sure to delete?",
                     text: "You will not be able to recover this imaginary file!!",
@@ -132,7 +136,7 @@
                 });
             }
 
-            function editKat(id) {
+            function editProd(id) {
                 save_method = 'edit';
                 $('input[name=_method]').val('PATCH');
                 $('#formProd form')[0].reset();
@@ -146,11 +150,14 @@
                     },
                     success: function(data) {
                         $('#formProd').modal('show');
-                        $('.modal-title').text('Edit Kategori');
+                        $('.modal-title').text('Edit Product');
 
                         $('#id').val(data.id);
-                        $('#nameKategori').val(data.name);
-                        $('#nameKategori').val(data.name);
+                        $('#nameProd').val(data.name);
+                        $('#foto').val(data.gambar);
+                        $('#ukurProd').val(data.ukuran_id);
+                        $('#katProd').val(data.kategori_id);
+                        $('#harProd').val(data.harga);
                     },
                     error: function(data, xhr, status, error) {
                         swal("Peringatan!!", "Terjadi kesalahan pada data!", "warning");
@@ -159,7 +166,7 @@
             }
 
             $(function() {
-                $('#formKat form').on('submit', function(e) {
+                $('#formProd form').on('submit', function(e) {
                     e.preventDefault();
 
                     var csrfToken = $('meta[name="csrf-token"]').attr('content');
@@ -174,16 +181,16 @@
                     $.ajax({
                         url: url,
                         type: "POST",
-                        data: new FormData($('#formKat form')[0]),
+                        data: new FormData($('#formProd form')[0]),
                         contentType: false,
                         processData: false,
                         success: function(data) {
-                            $('#formKat').modal('hide');
+                            $('#formProd').modal('hide');
                             table.ajax.reload();
-                            swal("Berhasil", "Kategori Berhasil disimpan!!", "success");
+                            swal("Berhasil", "Product Berhasil disimpan!!", "success");
                         },
                         error: function(data, xhr, status, error) {
-                            swal("Peringatan", "Kategori gagal tersimpan", "warning");
+                            swal("Peringatan", "Product gagal tersimpan", "warning");
                         }
                     })
                 });

@@ -37,6 +37,9 @@ class ProductController extends Controller
                     return $product->ukuran->nUkuran;
                 }
             )
+            ->addColumn('gambar', function ($product) {
+                return asset('storage/' . $product->gambar);
+            })
             ->addColumn('action', function ($product) {
                 return '<span><buttton data-toggle="tooltip" data-placement="top" title="Edit" onclick="editProd(' . $product->id . ')"><i class="fa fa-pencil color-muted m-r-5"></i> </buttton> ' .
                     '<buttton data-toggle="tooltip" data-placement="top" title="Close" onclick="delProd(' . $product->id . ')"><i class="fa fa-close color-danger"></i></buttton></span>';
@@ -87,7 +90,7 @@ class ProductController extends Controller
      */
     public function edit(product $product)
     {
-        //
+        return response()->json($product);
     }
 
     /**
@@ -95,7 +98,28 @@ class ProductController extends Controller
      */
     public function update(Request $request, product $product)
     {
-        //
+        $request->validate([
+            'name' => 'required|min:2|string',
+            'gambar' => 'nullable|mimes:png,jpg,jpeg',
+            'ukuran' => 'required',
+            'kategori' => 'required',
+            'harga' => 'required'
+        ]);
+
+        $product->update([
+            'name' => $request->name,
+            'ukuran_id' => $request->ukuran,
+            'kategori_id' => $request->kategori,
+            'harga' => $request->harga
+        ]);
+
+        if ($request->hasFile('gambar')) {
+            $product->update([
+                'gambar' => $request->file('gambar')->store('photo/produk', 'public')
+            ]);
+        }
+
+        return response()->json(['produk' => $product]);
     }
 
     /**
@@ -103,6 +127,8 @@ class ProductController extends Controller
      */
     public function destroy(product $product)
     {
-        //
+        $product->delete();
+
+        return response()->json($product);
     }
 }
