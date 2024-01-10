@@ -57,6 +57,8 @@ Route::group(['middleware' => 'role:admin'], function () {
         Route::get('/product/{product}/edit', 'edit')->name('product.edit');
         Route::get('/productAjax', 'productAjax')->name('productAjax');
         Route::post('/product', 'store')->name('product.save');
+        Route::patch('/product/{product}', 'update')->name('product.update');
+        Route::delete('/product/{product}', 'destroy')->name('product.delete');
     });
 });
 
