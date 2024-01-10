@@ -62,7 +62,7 @@ class UkuranController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(ukuran $ukuran)
+    public function edit(Ukuran $ukuran)
     {
         return response()->json($ukuran);
     }
@@ -70,15 +70,23 @@ class UkuranController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, ukuran $ukuran)
+    public function update(Request $request, Ukuran $ukuran)
     {
-        //
+        $request->validate([
+            'nUkuran' => 'required|string'
+        ]);
+        $ukuran->update([
+            'nUkuran' => $request->nUkuran,
+            'harga' => $request->harga
+        ]);
+
+        return response()->json(['ukuran' => $ukuran]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ukuran $ukuran)
+    public function destroy(Ukuran $ukuran)
     {
         $ukuran->delete();
 

@@ -45,16 +45,16 @@ Route::group(['middleware' => 'role:admin'], function () {
 
     Route::controller(UkuranController::class)->group(function () {
         Route::get('ukuran', 'index')->name('ukuran');
-        Route::post('ukuran', 'store')->name('ukuran.save');
+        Route::post('/ukuran', 'store')->name('ukuran.save');
         Route::get('/ajaxUkuran', 'ajaxUkuran')->name('ajaxUkuran');
-        Route::get('/ukuran/{ukuran}/edit', 'ajaxUkuran')->name('ukuran.edit');
+        Route::get('/ukuran/{ukuran}/edit', 'edit')->name('ukuran.edit');
         Route::patch('/ukuran/{ukuran}', 'update')->name('ukuran.update');
         Route::delete('/ukuran/{ukuran}', 'destroy')->name('ukuran.delete');
     });
 
     Route::controller(ProductController::class)->group(function () {
         Route::get('product', 'index')->name('product');
-        Route::post('product', 'store')->name('product.save');
+        Route::post('/product', 'store')->name('product.save');
         Route::get('/product/{product}/edit', 'edit')->name('product.edit');
         Route::get('/productAjax', 'productAjax')->name('productAjax');
         Route::patch('/product/{product}', 'update')->name('product.update');

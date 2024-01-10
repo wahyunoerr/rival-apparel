@@ -161,12 +161,12 @@
                         contentType: false,
                         processData: false,
                         success: function(data) {
-                            $('#formKat').modal('hide');
+                            $('#formUkur').modal('hide');
                             table.ajax.reload();
-                            swal("Berhasil", "Kategori Berhasil disimpan!!", "success");
+                            swal("Berhasil", "Ukuran Berhasil disimpan!!", "success");
                         },
                         error: function(data, xhr, status, error) {
-                            swal("Peringatan", "Kategori gagal tersimpan", "warning");
+                            swal("Peringatan", "Ukuran gagal tersimpan", "warning");
                         }
                     })
                 });
