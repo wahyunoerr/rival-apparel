@@ -17,11 +17,12 @@
                             placeholder="Masukkan Nama Produk" autofocus>
                     </div>
                     <div class="form-group">
-                        <label for="nameProd">Gambar Produk :</label>
+                        <label for="gambarProd">Gambar Produk :</label>
                         <input type="file" name="gambar" id="foto" class="form-control">
+                        <div id="img-thumbnail"></div>
                     </div>
                     <div class="form-group">
-                        <label for="nameProd">Ukuran :</label>
+                        <label for="nameUkur">Ukuran :</label>
                         <select name="ukuran" id="ukurProd" class="form-control">
                             @foreach ($ukuran as $item)
                                 <option value="{{ $item->id }}">{{ $item->nUkuran }}</option>
@@ -29,7 +30,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="nameProd">Kategori Produk :</label>
+                        <label for="nameKat">Kategori Produk :</label>
                         <select name="kategori" id="katProd" class="form-control">
                             @foreach ($kategori as $item)
                                 <option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -37,8 +38,8 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="nameProd">Harga :</label>
-                        <input type="number" name="harga" id="harProd" class="form-control"
+                        <label for="harProd">Harga :</label>
+                        <input type="text" name="harga" id="harProd" class="form-control"
                             placeholder="Masukkan Harga Produk">
                     </div>
             </div>

@@ -151,7 +151,7 @@
                     if (save_method == 'add') {
                         url = "{{ route('ukuran.save') }}";
                     } else {
-                        url = "{{ url('ukuran') }}/" + id;
+                        url = "{{ url('ukuran') }}/" + id + "/edit";
                     }
 
                     $.ajax({

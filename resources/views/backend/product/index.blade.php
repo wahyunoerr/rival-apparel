@@ -45,7 +45,7 @@
     @include('backend.product.form')
     @push('scripts')
         <script type="text/javascript">
-            var table = $('#product-table').DataTable({
+            const table = $('#product-table').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: "{{ route('productAjax') }}",
@@ -96,6 +96,7 @@
                 $('#formProd').modal('show');
                 $('#formProd form')[0].reset();
                 $('.modal-title').text('Add Product');
+                $('#img-thumbnail').html('');
             }
 
             function delProd(id) {
@@ -140,7 +141,7 @@
                 save_method = 'edit';
                 $('input[name=_method]').val('PATCH');
                 $('#formProd form')[0].reset();
-                var csrfToken = $('meta[name="csrf-token"]').attr('content');
+                const csrfToken = $('meta[name="csrf-token"]').attr('content');
                 $.ajax({
                     url: "{{ url('product') }}/" + id + "/edit",
                     type: "GET",
@@ -154,10 +155,16 @@
 
                         $('#id').val(data.id);
                         $('#nameProd').val(data.name);
-                        $('#foto').val(data.gambar);
                         $('#ukurProd').val(data.ukuran_id);
                         $('#katProd').val(data.kategori_id);
                         $('#harProd').val(data.harga);
+
+                        if (data.gambar) {
+                            const el = document.getElementById('img-thumbnail');
+                            el.innerHTML =
+                                `<img src="{{ Storage::url('${data.gambar}') }}" width="250" height="250">`
+                        }
+
                     },
                     error: function(data, xhr, status, error) {
                         swal("Peringatan!!", "Terjadi kesalahan pada data!", "warning");
@@ -169,8 +176,8 @@
                 $('#formProd form').on('submit', function(e) {
                     e.preventDefault();
 
-                    var csrfToken = $('meta[name="csrf-token"]').attr('content');
-                    var id = $('#id').val();
+                    const csrfToken = $('meta[name="csrf-token"]').attr('content');
+                    const id = $('#id').val();
 
                     if (save_method == 'add') {
                         url = "{{ route('product.save') }}";
