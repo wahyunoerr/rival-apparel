@@ -126,7 +126,7 @@
             <li><a href="#" target="_blank"><i class="fab fa-twitter-square"></i></a></li>
             <li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
         </ul>
-        <p class="mb-0">Copyright © Fables 2018. All rights reserved.</p>
+        <p class="mb-0">Copyright © Rival-Apps {{ date('Y') }}. All rights reserved.</p>
 
     </div>
 

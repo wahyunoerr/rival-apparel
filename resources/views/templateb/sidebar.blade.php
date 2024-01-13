@@ -29,7 +29,7 @@
             @hasanyrole('admin|desainer')
                 <li class="nav-label">Designer</li>
                 <li>
-                    <a href="{{ route('ukuran') }}" aria-expanded="false">
+                    <a href="{{ route('pesanan') }}" aria-expanded="false">
                         <i class="icon-notebook menu-icon"></i> <span class="nav-text">Pemesanan</span>
                     </a>
                 </li>

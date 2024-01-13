@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CardProductController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\PesananController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
@@ -21,6 +23,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('frontend.homepage.index');
+});
+
+Route::controller(CardProductController::class)->group(function () {
+    Route::get('/card-products', 'index')->name('card.products');
 });
 
 Route::get('/dashboard', function () {
@@ -59,6 +65,10 @@ Route::group(['middleware' => 'role:admin'], function () {
         Route::get('/productAjax', 'productAjax')->name('productAjax');
         Route::patch('/product/{product}', 'update')->name('product.update');
         Route::delete('/product/{product}', 'destroy')->name('product.delete');
+    });
+
+    Route::controller(PesananController::class)->group(function () {
+        Route::get('/pesanan', 'index')->name('pesanan');
     });
 });
 

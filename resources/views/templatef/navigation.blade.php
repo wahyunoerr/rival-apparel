@@ -163,7 +163,8 @@
                                     Store
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="sub-nav4">
-                                    <li><a class="dropdown-item" href="store_grid_list.html">Product Category </a>
+                                    <li><a class="dropdown-item" href="{{ route('card.products') }}">Product Category
+                                        </a>
                                     </li>
                                     <li><a class="dropdown-item" href="store_single.html">Product Single</a></li>
                                 </ul>
