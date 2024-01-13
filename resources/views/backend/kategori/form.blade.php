@@ -9,7 +9,7 @@
             <div class="modal-body">
                 <form action="" method="POST" enctype="multipart/form-data">
                     @csrf
-                    @method('POST')
+                    @method('PATCH')
                     <input type="hidden" name="id" id="id">
                     <div class="form-group">
                         <label for="nameKategori">Nama Kategori :</label>

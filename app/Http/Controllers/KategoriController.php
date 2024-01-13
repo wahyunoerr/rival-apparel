@@ -75,7 +75,7 @@ class KategoriController extends Controller
             'name' => 'required|min:2|string'
         ]);
         $kategori->update([
-            'name' => $request->name
+            'name' => $request->name,
         ]);
 
         return response()->json(['kategori' => $kategori]);

@@ -144,7 +144,7 @@
                     if (save_method == 'add') {
                         url = "{{ route('kategori.save') }}";
                     } else {
-                        url = "{{ url('kategori') }}/" + id + "/edit";
+                        url = "{{ url('kategori') }}/" + id;
                     }
 
                     $.ajax({

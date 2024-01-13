@@ -182,7 +182,7 @@
                     if (save_method == 'add') {
                         url = "{{ route('product.save') }}";
                     } else {
-                        url = "{{ url('product') }}/" + id + "/edit";
+                        url = "{{ url('product') }}/" + id;
                     }
 
                     $.ajax({

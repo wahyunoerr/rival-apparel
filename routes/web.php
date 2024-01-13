@@ -37,7 +37,7 @@ Route::group(['middleware' => 'role:admin'], function () {
     Route::controller(KategoriController::class)->group(function () {
         Route::get('kategori', 'index')->name('kategori');
         Route::get('/kategoriAjax', 'ajaxKategori')->name('kategoriAjax');
-        Route::post('/kategori', 'store')->name('kategori.save');
+        Route::patch('/kategori', 'store')->name('kategori.save');
         Route::get('/kategori/{kategori}/edit', 'edit')->name('kategori.edit');
         Route::patch('/kategori/{kategori}', 'update')->name('kategori.update');
         Route::delete('/kategori/{kategori}', 'destroy')->name('kategori.delete');
@@ -45,7 +45,7 @@ Route::group(['middleware' => 'role:admin'], function () {
 
     Route::controller(UkuranController::class)->group(function () {
         Route::get('ukuran', 'index')->name('ukuran');
-        Route::post('/ukuran', 'store')->name('ukuran.save');
+        Route::patch('/ukuran', 'store')->name('ukuran.save');
         Route::get('/ajaxUkuran', 'ajaxUkuran')->name('ajaxUkuran');
         Route::get('/ukuran/{ukuran}/edit', 'edit')->name('ukuran.edit');
         Route::patch('/ukuran/{ukuran}', 'update')->name('ukuran.update');
@@ -54,7 +54,7 @@ Route::group(['middleware' => 'role:admin'], function () {
 
     Route::controller(ProductController::class)->group(function () {
         Route::get('product', 'index')->name('product');
-        Route::post('/product', 'store')->name('product.save');
+        Route::patch('/product', 'store')->name('product.save');
         Route::get('/product/{product}/edit', 'edit')->name('product.edit');
         Route::get('/productAjax', 'productAjax')->name('productAjax');
         Route::patch('/product/{product}', 'update')->name('product.update');
